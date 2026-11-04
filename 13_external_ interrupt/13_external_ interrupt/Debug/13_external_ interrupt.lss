@@ -164,9 +164,9 @@ void external_interrupt_INT1_init()
   e4:	82 60       	ori	r24, 0x02	; 2
   e6:	8d bb       	out	0x1d, r24	; 29
 	//config pd3 as input for external interrupt
-	DDRD |= (1<<DDD3);
+	DDRD &= ~(1<<DDD3);
   e8:	8a b1       	in	r24, 0x0a	; 10
-  ea:	88 60       	ori	r24, 0x08	; 8
+  ea:	87 7f       	andi	r24, 0xF7	; 247
   ec:	8a b9       	out	0x0a, r24	; 10
 	//config interrupt trigger : falling edge 
 	EICRA |=(1<<ISC11);  //falling edge ISC10 => 1
